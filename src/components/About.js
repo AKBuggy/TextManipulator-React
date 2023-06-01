@@ -1,28 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function About() {
-  const [myStyle, setMyStyle] = useState({
-    color: "black",
-    backgroundColor: "white",
-  });
-  const [btnText, setBtnText] = useState("Enable Dark Mode")
+export default function About(props) {
+  // const [myStyle, setMyStyle] = useState({
+  //   color: "black",
+  //   backgroundColor: "white",
+  // });
   
-  const toggleStyle = () =>{
-    if(myStyle.color === 'black'){
-        setMyStyle({
-            color: 'white',
-            backgroundColor: 'black'
-        })
-        setBtnText("Enable Light Mode")
-    }
-
-    else{
-        setMyStyle({
-            color: 'black',
-            backgroundColor: 'white'
-        })
-        setBtnText("Enable Dark Mode")
-    }
+  let myStyle = {
+    color: props.mode === 'dark'?'white':'#212529',
+    backgroundColor: props.mode === 'dark'?'#212529':'white'
   }
 
   return (
@@ -41,7 +27,7 @@ export default function About() {
                 aria-controls="collapseOne"
                 style={myStyle}
               >
-                Accordion Item #1
+                <strong>Analyse your text</strong> 
               </button>
             </h2>
             <div
@@ -73,7 +59,7 @@ export default function About() {
                 aria-controls="collapseTwo"
                 style={myStyle}
               >
-                Accordion Item #2
+                <strong>Free to use</strong>
               </button>
             </h2>
             <div
@@ -105,7 +91,7 @@ export default function About() {
                 aria-controls="collapseThree"
                 style={myStyle}
               >
-                Accordion Item #3
+                <strong>Browser Compatible</strong>
               </button>
             </h2>
             <div
@@ -126,15 +112,6 @@ export default function About() {
               </div>
             </div>
           </div>
-        </div>
-        <div className="container my-3">
-          <button
-            className="btn btn-outline-primary my-3"
-            onClick={toggleStyle}
-            type="submit"
-          >
-            {btnText}
-          </button>
         </div>
       </div>
     </>

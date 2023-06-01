@@ -31,7 +31,7 @@ export default function TextForm(props) {
   return (
     <>
       <div className="container" style={{color: props.mode === 'dark'?'white':'#212529'}}>
-        <h1>{props.heading}</h1>
+        <h1 className="mb-4">{props.heading}</h1>
         <div className="mb-3">
           <textarea
             className="form-control"
@@ -45,7 +45,8 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-primary mx-1"
+          disabled={text.length === 0 || !isNaN(text)}
+          className="btn btn-primary mx-1 my-1"
           onClick={handleUpClick}
         >
           Convert to uppercase
@@ -53,7 +54,8 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-success mx-1"
+          disabled={text.length === 0 || !isNaN(text)}
+          className="btn btn-success mx-1 my-1"
           onClick={handleLowClick}
         >
           Convert to lowercase
@@ -61,7 +63,8 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-warning mx-1"
+          disabled={text.length === 0}
+          className="btn btn-warning mx-1 my-1"
           onClick={handleClearClick}
         >
           Clear Text
@@ -69,7 +72,8 @@ export default function TextForm(props) {
 
         <button
           type="button"
-          className="btn btn-info mx-1"
+          disabled={text.length === 0}
+          className="btn btn-info mx-1 my-1"
           onClick={handleCopy}
         >
           Copy Text
@@ -83,7 +87,7 @@ export default function TextForm(props) {
         </p>
         <p>{minCount} minutes </p>
         <h2>Preview</h2>
-        <p>{text.length > 0? text: "Enter something in the textbox to preview it here!"}</p>
+        <p>{text.length > 0? text: "Nothing to preview!"}</p>
       </div>
     </>
   );
