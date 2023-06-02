@@ -17,5 +17,8 @@
 Thank you for your interest in this project and happy coding!
 
 
+Medium blog: https://medium.com/@ankitjalaja1/make-your-first-github-contribution-5972a3c39a1e
+
+
 Screenshots:
 ![image](https://github.com/AKBuggy/TextManipulator-React/assets/95762611/0c90e779-13c3-431d-9c03-1765c49e5f36)
