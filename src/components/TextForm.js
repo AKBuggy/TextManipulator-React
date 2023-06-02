@@ -4,33 +4,39 @@ export default function TextForm(props) {
   const handleUpClick = () => {
     let newText = text.toUpperCase();
     setText(newText);
-    props.showAlert("Converted to uppercase!", "success")
+    props.showAlert("Converted to uppercase!", "success");
   };
   const handleLowClick = () => {
     let newText = text.toLowerCase();
     setText(newText);
-    props.showAlert("Converted to uppercase!", "success")
+    props.showAlert("Converted to uppercase!", "success");
   };
   const handleOnChange = (event) => {
     setText(event.target.value);
   };
   const handleClearClick = (event) => {
     setText(event.target.value);
-    props.showAlert("Cleared Text", "success")
+    props.showAlert("Cleared Text", "success");
   };
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    props.showAlert("Copied to clipboard", "success")
-  }
+    props.showAlert("Copied to clipboard", "success");
+  };
 
   const [text, setText] = useState("");
 
-  const wordCount = text.split(" ").filter((word) => word !== "").length;
+  const wordCount = text.split(/\s+/).filter((element) => {
+    return element.length !== 0;
+  }).length;
+  
   const minCount = 0.008 * text.split(" ").filter((word) => word !== "").length;
 
   return (
     <>
-      <div className="container" style={{color: props.mode === 'dark'?'white':'#212529'}}>
+      <div
+        className="container"
+        style={{ color: props.mode === "dark" ? "white" : "#212529" }}
+      >
         <h1 className="mb-4">{props.heading}</h1>
         <div className="mb-3">
           <textarea
@@ -39,7 +45,10 @@ export default function TextForm(props) {
             id="floatingTextarea2"
             onChange={handleOnChange}
             rows={8}
-            style={{backgroundColor: props.mode === 'dark'?'#212529':'white', color: props.mode === 'dark'?'white':'#212529'}}
+            style={{
+              backgroundColor: props.mode === "dark" ? "#212529" : "white",
+              color: props.mode === "dark" ? "white" : "#212529",
+            }}
           ></textarea>
         </div>
 
@@ -80,14 +89,18 @@ export default function TextForm(props) {
         </button>
       </div>
 
-      <div className="container my-3"  style={{color: props.mode === 'dark'?'white':'black'}}>
+      <div
+        className="container my-3"
+        style={{ color: props.mode === "dark" ? "white" : "black" }}
+      >
         <h2>Your text summary</h2>
         <p>
+          {" "}
           {wordCount} words and {text.length} characters
         </p>
         <p>{minCount} minutes </p>
         <h2>Preview</h2>
-        <p>{text.length > 0? text: "Nothing to preview!"}</p>
+        <p>{text.length > 0 ? text : "Nothing to preview!"}</p>
       </div>
     </>
   );

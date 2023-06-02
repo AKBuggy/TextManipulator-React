@@ -54,13 +54,6 @@ function App() {
           </Routes>
         </div>
       </Router>
-
-      {/* <div className="container">
-      <TextForm showAlert={showAlert} heading="Enter Text" mode={mode} />
-      </div> */}
-      {/* <div className="container">
-        <About />
-      </div> */}
     </>
   );
 }
