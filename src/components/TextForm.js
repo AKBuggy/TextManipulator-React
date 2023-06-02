@@ -20,8 +20,13 @@ export default function TextForm(props) {
   };
   const handleCopy = () => {
     navigator.clipboard.writeText(text);
-    props.showAlert("Copied to clipboard", "success");
-  };
+    props.showAlert("Copied to clipboard", "success")
+  }
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ] +/);
+    setText(newText.join(" "))
+    props.showAlert("Extra space removed", "success")
+  }
 
   const [text, setText] = useState("");
 
@@ -87,6 +92,8 @@ export default function TextForm(props) {
         >
           Copy Text
         </button>
+
+        <button className="btn btn-primary mx-1" disabled={text.length === 0} onClick={handleExtraSpaces}> Remove Extra Space </button>
       </div>
 
       <div
